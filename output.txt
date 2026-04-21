@@ -1,0 +1,47 @@
+==========================================
+Running Question 1: DAXPY Operation
+==========================================
+mpirun -np 2 ./q1
+=== DAXPY Operation Results ===
+Vector Size: 65536
+Number of Processes: 2
+Local Vector Size per Process: 32768
+Scalar a: 2.50
+Time taken (MPI): 0.000050 seconds
+Time taken (Sequential): 0.000071 seconds
+Speedup: 1.41 x
+==============================
+
+Sample results from Process 0:
+Index 0: X[0] = 0.00 (expected: 0.00)
+Index 100: X[100] = 300.00 (expected: 300.00)
+
+==========================================
+Running Question 2: Broadcast Race
+==========================================
+mpirun -np 4 ./q2
+
+=== Broadcast Race Results ===
+Array Size: 10000000 (80.0 MB)
+Number of Processes: 4
+
+MyBcast (Linear, for-loop): 0.545990 seconds
+MPI_Bcast (Tree-based):    0.031972 seconds
+Speedup Factor:             17.08 x
+
+Analysis:
+- MyBcast Time Complexity: O(N) where N = number of processes
+- MPI_Bcast Time Complexity: O(log N) with tree-based algorithm
+==============================
+
+
+==========================================
+Running Question 3: Distributed Dot Product
+==========================================
+mpirun -np 2 ./q3
+
+=== Parallel Dot Product with Amdahl's Law Analysis ===
+Total Vector Size: 500000000 elements
+Number of Processes: 2
+Multiplier: 2.50
+
